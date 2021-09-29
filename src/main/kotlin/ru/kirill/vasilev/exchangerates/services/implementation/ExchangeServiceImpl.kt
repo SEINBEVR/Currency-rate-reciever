@@ -13,6 +13,7 @@ import java.math.BigDecimal
 import java.net.URI
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 @Service
 class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
@@ -30,7 +31,7 @@ class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
             throw BadCurrencyToExchange("Код валюты должен состоять из 3х символов")
         }
         logger.info("Код валюты для обмена $currencyToExchange")
-        val symbols = "RUB,$currencyToExchange"
+        val symbols = "RUB,${currencyToExchange.uppercase()}"
         val rateToday = getRateByDateAndSymbols(today, symbols, currencyToExchange)
         val rateYesterday = getRateByDateAndSymbols(yesterday, symbols, currencyToExchange)
         val tag = getRichOrBroke(rateToday, rateYesterday)
