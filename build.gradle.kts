@@ -28,15 +28,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-configuration-processor:2.5.5")
 
     implementation("io.klogging:klogging-jvm:0.4.0")
-
     implementation("org.springframework.boot:spring-boot-starter-web:2.5.4")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.5")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:3.0.3")
-    compileOnly("org.projectlombok:lombok:1.18.20")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools:2.5.4")
-    annotationProcessor("org.projectlombok:lombok:1.18.20")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:2.5.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.5")
