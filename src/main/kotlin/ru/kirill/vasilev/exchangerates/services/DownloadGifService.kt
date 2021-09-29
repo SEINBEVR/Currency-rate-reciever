@@ -4,5 +4,5 @@ import org.springframework.http.ResponseEntity
 import java.net.URI
 
 interface DownloadGifService {
-    fun getGifByURL(url: URI): ResponseEntity<ByteArray>
+    fun getGifByURI(uri: URI): ResponseEntity<ByteArray>
 }

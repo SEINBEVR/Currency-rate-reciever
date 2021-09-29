@@ -9,8 +9,8 @@ import java.net.URI
 @Service
 class DownloadGifServiceImpl(val downloadGifClient: DownloadGifClient): DownloadGifService {
 
-    override fun getGifByURL(url: URI): ResponseEntity<ByteArray> {
-        return downloadGifClient.getGifByURL(url)
+    override fun getGifByURI(uri: URI): ResponseEntity<ByteArray> {
+        return downloadGifClient.getGifByURI(uri)
     }
 
 }

@@ -1,7 +1,6 @@
 package ru.kirill.vasilev.exchangerates.services.implementation
 
 import io.klogging.*
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import ru.kirill.vasilev.exchangerates.exception.BadCurrencyToExchange
@@ -13,7 +12,7 @@ import java.math.BigDecimal
 import java.net.URI
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.*
+
 
 @Service
 class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
@@ -37,7 +36,7 @@ class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
         val tag = getRichOrBroke(rateToday, rateYesterday)
         logger.info("По итогам изменения курса будет получен gif из категории: $tag")
         val gifURI = URI.create(getGifByTag(tag))
-        return downloadGifService.getGifByURL(gifURI)
+        return downloadGifService.getGifByURI(gifURI)
     }
 
     private fun isCurrencyValid(symbols: String?) =

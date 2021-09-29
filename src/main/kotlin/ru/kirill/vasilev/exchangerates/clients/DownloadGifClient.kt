@@ -9,5 +9,5 @@ import java.net.URI
 interface DownloadGifClient {
 
     @GetMapping
-    fun getGifByURL(url: URI): ResponseEntity<ByteArray>
+    fun getGifByURI(uri: URI): ResponseEntity<ByteArray>
 }
