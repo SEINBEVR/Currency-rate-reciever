@@ -35,6 +35,6 @@
 
 ## Endpoints
 Возвращает .gif в зависимости от курса валют
-* /api/gif/Код_валюты
+* /api/gif/код_валюты
 > Пример : **http://localhost:8080/api/gif/BTC**
 
