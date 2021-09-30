@@ -7,6 +7,9 @@ import ru.kirill.vasilev.exchangerates.configuration.OpenexchangeConfig
 import ru.kirill.vasilev.exchangerates.dto.OpenexchangeratesDTO
 import ru.kirill.vasilev.exchangerates.services.OpenexchangeratesService
 
+/**
+ * Service for receiving DTO of the exchange rate received by a date and symbols using openexchangeratesClient
+ */
 @Service
 class OpenexchangeratesServiceImpl(val openexchangeratesClient: OpenexchangeratesClient,
                                    val openexchangeConfig: OpenexchangeConfig): OpenexchangeratesService {

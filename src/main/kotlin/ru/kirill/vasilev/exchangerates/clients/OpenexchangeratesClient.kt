@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestParam
 import ru.kirill.vasilev.exchangerates.dto.OpenexchangeratesDTO
 
-
+/**
+ * Feign client for the connection with openexchangerates REST API for receiving the exchange rate by a date
+ */
 @FeignClient(url = "\${openexchangerates.url}", name = "openexchangerates-client")
 interface OpenexchangeratesClient {
 

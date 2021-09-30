@@ -7,6 +7,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients
 import ru.kirill.vasilev.exchangerates.configuration.GiphyConfig
 import ru.kirill.vasilev.exchangerates.configuration.OpenexchangeConfig
 
+/**
+ * @author Kirill Vasilev - kirill.vasilev.work@gmail.com
+ * The application receives the exchange rate for today and yesterday and,
+ * based on comparison results,
+ * returns gif from "rich" or "broke" category
+ */
 @SpringBootApplication
 @EnableFeignClients
 @EnableConfigurationProperties(OpenexchangeConfig::class, GiphyConfig::class)

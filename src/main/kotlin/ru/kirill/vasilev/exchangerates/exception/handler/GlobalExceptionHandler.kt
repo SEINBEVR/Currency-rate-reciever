@@ -23,8 +23,9 @@ class GlobalExceptionHandler {
         return ResponseEntity(errorDetails, HttpStatus.FORBIDDEN)
     }
 
+    @ExceptionHandler(RuntimeException::class)
     fun anyOtherException(e: Exception): ResponseEntity<Response> {
-        val errorDetails = Response("", e.message!!)
+        val errorDetails = Response("Another runtime exception occurred", e.message!!)
         return ResponseEntity(errorDetails, HttpStatus.BAD_REQUEST)
     }
 

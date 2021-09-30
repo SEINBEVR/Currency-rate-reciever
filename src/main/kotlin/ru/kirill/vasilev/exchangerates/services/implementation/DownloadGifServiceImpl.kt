@@ -6,6 +6,9 @@ import ru.kirill.vasilev.exchangerates.clients.DownloadGifClient
 import ru.kirill.vasilev.exchangerates.services.DownloadGifService
 import java.net.URI
 
+/**
+ * Service for receiving a gif by URI using downloadGifClient
+ */
 @Service
 class DownloadGifServiceImpl(val downloadGifClient: DownloadGifClient): DownloadGifService {
 

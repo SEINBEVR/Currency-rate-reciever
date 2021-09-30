@@ -13,7 +13,9 @@ import java.net.URI
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-
+/**
+ * Service for receiving a gif by comparison of today's and yesterday's exchange rate
+ */
 @Service
 class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
                           val giphyService: GiphyService,
@@ -21,6 +23,9 @@ class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
 
     val logger = noCoLogger(ExchangeServiceImpl::class)
 
+    /**
+     * Receiving gif by comparing the exchange rate of the transmitted currency
+     */
     override fun getGifByExchangeRate(currencyToExchange: String): ResponseEntity<ByteArray> {
         logger.info("Начало поиска gif по извлеченному курсу")
         val today = LocalDate.now().format(DateTimeFormatter.ISO_DATE)
@@ -39,10 +44,15 @@ class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
         return downloadGifService.getGifByURI(gifURI)
     }
 
+    /**
+     * Validation of the currency
+     */
     private fun isCurrencyValid(symbols: String?) =
         symbols?.length == 3
 
-
+    /**
+     * Receiving an exchange rate by date and symbols using openexchangeratesService
+     */
     private fun getRateByDateAndSymbols(date: String, symbols: String, currencyToExchange: String): BigDecimal {
         val currencyDTO = openexchangeratesService.getCurrency(date, symbols).body
         val rate = currencyDTO!!.rates["RUB"]!!.div(currencyDTO.rates[currencyToExchange]!!)
@@ -50,11 +60,17 @@ class ExchangeServiceImpl(val downloadGifService: DownloadGifService,
         return rate
     }
 
+    /**
+     * Checking whether the exchange rate has risen per day
+     */
     private fun getRichOrBroke(rateToday: BigDecimal, rateYesterday: BigDecimal): String {
         return if(rateToday > rateYesterday) "rich"
         else "broke"
     }
 
+    /**
+     * Receiving URL of the gif received by tag using giphyService
+     */
     private fun getGifByTag(tag: String): String {
         val gifDTO = giphyService.getGif(tag).body
         val gifURL = gifDTO!!.data["image_original_url"].toString()

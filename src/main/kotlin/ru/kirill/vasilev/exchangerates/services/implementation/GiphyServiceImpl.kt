@@ -7,6 +7,9 @@ import ru.kirill.vasilev.exchangerates.configuration.GiphyConfig
 import ru.kirill.vasilev.exchangerates.dto.GiphyDTO
 import ru.kirill.vasilev.exchangerates.services.GiphyService
 
+/**
+ * Service for receiving DTO of the gif received by a tag using giphyClient
+ */
 @Service
 class GiphyServiceImpl(val giphyClient: GiphyClient,
                        val giphyConfig: GiphyConfig): GiphyService {
